@@ -84,7 +84,6 @@ public extension BaseLog {
             let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let logFileURL = documentsPath.appendingPathComponent(self.logFileName)
             
-            // Create a mutable copy of log for potential modifications
             var validLog = self.log
 
             if !JSONSerialization.isValidJSONObject(self.log) {
@@ -155,9 +154,9 @@ public extension BaseLog {
 public extension BaseLog {
     
     // Helper: Print Pretty-printed JSON array
-    func printPrettyJSON(from array: [Any]) {
+    func printPrettyJSON(from array: [Any], name: String? = nil) {
         if let jsonString = String.prettyPrintedJSON(from: array) {
-            print("Pretty-Printed JSON Array: \n\(jsonString)")
+            print("\(name ?? "Pretty-Printed JSON Array"): \n\(jsonString)\n")
         } else {
             print("Failed to serialize array to pretty JSON")
         }

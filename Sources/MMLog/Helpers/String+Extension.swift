@@ -9,7 +9,6 @@ import Foundation
 
 public extension String {
     
-    // Helper: Pretty-print JSON array and return it as a String
     static func prettyPrintedJSON(from array: [Any]) -> String? {
         guard JSONSerialization.isValidJSONObject(array) else {
             return nil

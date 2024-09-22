@@ -23,7 +23,6 @@ public class ExampleLog: BaseLog {
 
 public extension ExampleLog {
     
-    // Example of logging history messages
     func logSomeMessages(receivedMessages: [DictionaryRepresentable]? = nil,
                          currentMessages: [DictionaryRepresentable]? = nil,
                          updatedMessages: [DictionaryRepresentable]? = nil) {
@@ -64,7 +63,8 @@ public extension ExampleLog {
         ]
         
         if Self.consoleActive {
-            print("\(logPrefix): callback, `\(key)`, payload: \(payload), response: \(response)")
+            print("\(logPrefix): callback, `\(key)`, payload: \(payload)")
+            printPrettyJSON(from: response, name: "response")
         }
         
         append(logEntry)
