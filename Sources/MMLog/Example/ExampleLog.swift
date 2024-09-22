@@ -7,6 +7,21 @@
 
 import Foundation
 
+public struct Message: Hashable, Codable {
+    public var text: String
+    public let uuid: UUID
+}
+
+extension Message: DictionaryRepresentable {
+    public func toDictionary() -> [String: Any] {
+        let dict: [String: Any] = [
+            "text": text,
+            "uuid": uuid.uuidString
+        ]
+        return dict
+    }
+}
+
 public class ExampleLog: BaseLog {
     
     // MARK: Overrides -
