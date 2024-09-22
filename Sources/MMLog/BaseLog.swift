@@ -1,19 +1,13 @@
 //
 //  BaseLog.swift
-//  ResChatUtil
+//  MMLog
 //
-//  Created by Mihaela MJ on 22.09.2024..
+//  Created by Mihaela MJ on 23.09.2024..
 //
 
 import Foundation
 
-extension Date {
-    static func loggableCurrentDate() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy. HH:mm:ss"
-        return dateFormatter.string(from: Date())
-    }
-}
+
 
 open class BaseLog {
     

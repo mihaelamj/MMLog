@@ -1,8 +1,8 @@
 //
 //  DictionaryRepresentable.swift
-//  ResChatUtil
+//  MMLog
 //
-//  Created by Mihaela MJ on 22.09.2024..
+//  Created by Mihaela MJ on 23.09.2024..
 //
 
 import Foundation

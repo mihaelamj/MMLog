@@ -1,5 +1,6 @@
 //
-//  ExampleLog
+//  ExampleLog.swift
+//  MMLog
 //
 //  Created by Mihaela MJ on 23.09.2024..
 //
