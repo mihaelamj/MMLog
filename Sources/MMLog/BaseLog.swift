@@ -23,6 +23,8 @@ open class BaseLog {
     open var logFileName: String { return "_base_log.json" }
     open var logPrefix: String { return "DBGG: BaseLog->" }
     
+    // MARK: Constants -
+    
     static let debugActive = false
     
 #if DEBUG
@@ -33,7 +35,8 @@ open class BaseLog {
     public class var consoleActive: Bool { return false }
 #endif
     
-    // MARK: Initializer
+    // MARK: Initializer -
+    
     public init() {
         // Initialize logQueue with a unique label for each subclass
         let label = "com.Log.\(type(of: self))Queue"
@@ -46,7 +49,8 @@ open class BaseLog {
 
 public extension BaseLog {
     
-    // MARK: Append Log Entry
+    // MARK: Append Log Entry -
+    
     func append(_ logEntry: LogEntry) {
         guard Self.active else { return }
 
