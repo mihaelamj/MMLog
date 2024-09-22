@@ -10,8 +10,8 @@ public class ExampleLog: BaseLog {
     
     // MARK: Overrides -
     
-    open override var logFileName: String { "_reschat_UI_log.json" }
-    open override var logPrefix: String { "DBGG: UI_Event->" }
+    open override var logFileName: String { "_example_log.json" }
+    open override var logPrefix: String { "Example->" }
     
     // MARK: Singleton -
     
@@ -24,12 +24,12 @@ public extension ExampleLog {
     
     // Example of logging history messages
     func logSomeMessages(receivedMessages: [DictionaryRepresentable]? = nil,
-                            currentMessages: [DictionaryRepresentable]? = nil,
-                            updatedMessages: [DictionaryRepresentable]? = nil) {
+                         currentMessages: [DictionaryRepresentable]? = nil,
+                         updatedMessages: [DictionaryRepresentable]? = nil) {
         guard Self.active else { return }
         
         var logEntry: LogEntry = ["event" : "SomeMessages"]
-
+        
         if let receivedMessages = receivedMessages {
             logEntry["receivedMessages"] = receivedMessages.map { $0.toDictionary() }
         }
@@ -39,7 +39,6 @@ public extension ExampleLog {
         if let updatedMessages = updatedMessages {
             logEntry["updatedMessages"] = updatedMessages.map { $0.toDictionary() }
         }
-
         append(logEntry)
     }
     
@@ -53,7 +52,7 @@ public extension ExampleLog {
         append(logEntry)
     }
     
-    func logSocketCallback(key: String, payload: [String: Any], response: [Any]) {
+    func logCallback(key: String, payload: [String: Any], response: [Any]) {
         guard Self.active else { return }
         
         let logEntry: LogEntry = [
@@ -69,5 +68,28 @@ public extension ExampleLog {
         
         append(logEntry)
     }
-
+    
+    func log(action: String,
+             subActionName: String,
+             message: DictionaryRepresentable? = nil,
+             messages: [DictionaryRepresentable]? = nil) {
+        guard Self.active else { return }
+        
+        var logEntry: LogEntry = ["action": action]
+        logEntry["subAction"] = subActionName
+        
+        // Add message to log if present
+        if let message = message {
+            logEntry["message"] = message.toDictionary()
+        }
+        
+        // Add messages array to log if present
+        if let messages = messages {
+            logEntry["messages"] = messages.map { $0.toDictionary() }
+        }
+        
+        // Append the log entry
+        append(logEntry)
+    }
+    
 }
